@@ -1,6 +1,10 @@
 class TasksController < ApplicationController
-   def index
-     @tasks = Task.all
+   
+  def index
+    if logged_in?
+     @task = current_user.tasks.build
+     @tasks = current_user.tasks
+    end
   end
 
   def show
@@ -12,7 +16,7 @@ class TasksController < ApplicationController
   end
 
   def create
-    @task = Task.new(task_params)
+    @task = current_user.tasks.build(task_params)
     if @task.save
       flash[:success] = 'Task が作成されました'
       redirect_to @task
