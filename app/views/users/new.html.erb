@@ -20,8 +20,15 @@
     <%= f.label :password, 'パスワード' %>
 
     <%= f.password_field :password %>
+    
+    <%= f.label :password_confirmation, 'パスワード確認' %>
+
+        
+    <%= f.password_field :password_confirmation %>
 
 
 <%= f.submit 'ユーザ登録' %>
+
+<%= link_to 'ログイン',login_url %>
 
 <% end %>
